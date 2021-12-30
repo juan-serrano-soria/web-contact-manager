@@ -3,33 +3,64 @@ import ReactDOM from 'react-dom';
 
 import './style.css';
 
-function Counter() {
-  const [counter, setCounter] = useState(0);
-  const [numClicks, setNumClicks] = useState(0);
+function AddContact() {
+  const [name, setName] = useState('');
+  const [tlf, setTlf] = useState('');
+  const [email, setEmail] = useState('');
+  const [birth, setBirth] = useState('');
 
-  useEffect(() => {
-    alert('Number of clicks: ' + numClicks);
-  });
-
-  function increment() {
-    setCounter(counter + 1);
-    setNumClicks(numClicks + 1);
+  function handleName(e) {
+    setName(e.target.value);
   }
 
-  function decrement() {
-    setCounter(counter - 1);
-    setNumClicks(numClicks + 1);
+  function handleChange() {}
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('Submitted!');
   }
 
   return (
-    <div>
-      <p>{counter}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <p>
+        Name:
+        <input type="text" value={name} onChange={handleName} />
+      </p>
+      <p>
+        Phone:
+        <input type="text" value={tlf} onChange={handleChange} />
+      </p>
+      <p>
+        Email:
+        <input type="email" value={email} onChange={handleChange} />
+      </p>
+      <p>
+        Birthday:
+        <input type="date" value={birth} onChange={handleChange} />
+      </p>
+      <button type="submit">Add contact</button>
+    </form>
   );
 }
 
-const el = <Counter />;
+function ShowContactLit(props) {
+  const arr = props.data;
+  const listItems = arr.map((val, index) =>
+    <li key={index}>{val}</li>
+  );
+  
+  return <ul>{listItems}</ul>;
+}
+
+const contacts = ['Pepe', 'Popo'];
+
+const el = (
+  <div>
+    <h2>Input Form:</h2>
+    <AddContact />
+    <h2>Contacts:</h2>
+    <ShowContactLit data={contacts} />
+  </div>
+);
 
 ReactDOM.render(el, document.getElementById('root'));
