@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import './style.css';
 
-function AddContact() {
+function AddContact(props) {
   const [name, setName] = useState('');
   const [tlf, setTlf] = useState('');
   const [email, setEmail] = useState('');
@@ -16,8 +16,9 @@ function AddContact() {
   function handleChange() {}
 
   function handleSubmit(e) {
+    props.handleSubmit(name);
+    setName('');
     e.preventDefault();
-    console.log('Submitted!');
   }
 
   return (
@@ -52,15 +53,28 @@ function ShowContactLit(props) {
   return <ul>{listItems}</ul>;
 }
 
+
+function WebContactManager(props) {
+  const [contacts, setContacts] = useState(props.data);
+
+  function addContact(contact) {
+    setContacts([...contacts, contact]);
+  }
+
+  return (
+    <div>
+      <h2>Input Form:</h2>
+      <AddContact handleSubmit={addContact}/>
+      <h2>Contacts:</h2>
+      <ShowContactLit data={contacts} />
+    </div>
+  );
+}
+
 const contacts = ['Pepe', 'Popo'];
 
-const el = (
-  <div>
-    <h2>Input Form:</h2>
-    <AddContact />
-    <h2>Contacts:</h2>
-    <ShowContactLit data={contacts} />
-  </div>
-);
 
-ReactDOM.render(el, document.getElementById('root'));
+ReactDOM.render(
+  <WebContactManager data={contacts} />,
+  document.getElementById('root')
+  );
