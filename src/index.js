@@ -28,6 +28,9 @@ function AddContact(props) {
   function handleSubmit(e) {
     props.handleSubmit([name, tlf, email, birth]);
     setName('');
+    setTlf('');
+    setEmail('');
+    setBirth('');
     e.preventDefault();
   }
 
