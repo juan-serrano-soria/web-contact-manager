@@ -1,4 +1,12 @@
-h1 {
+#root {
   font-family: sans-serif;
   text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding-block: 10px;
 }
