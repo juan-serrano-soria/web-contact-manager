@@ -83,10 +83,7 @@ function WebContactManager(props) {
   );
 }
 
-const contacts = [
-  ['Pepe', '1234', 'pepe@pipi.com', '2000-01-01'],
-  ['Pipi', '1234', 'pepe@pipi.com', '1900-01-31'],
-];
+const contacts = [];
 
 ReactDOM.render(
   <WebContactManager data={contacts} />,
