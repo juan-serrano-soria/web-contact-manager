@@ -38,19 +38,19 @@ function AddContact(props) {
     <form onSubmit={handleSubmit}>
       <p>
         Name:
-        <input type="text" value={name} onChange={handleChangeName} />
+        <input type="text" value={name} onChange={handleChangeName} required/>
       </p>
       <p>
         Phone:
-        <input type="text" value={tlf} onChange={handleChangeTlf} />
+        <input type="text" value={tlf} onChange={handleChangeTlf} required/>
       </p>
       <p>
         Email:
-        <input type="email" value={email} onChange={handleChangeEmail} />
+        <input type="email" value={email} onChange={handleChangeEmail} required/>
       </p>
       <p>
         Birthday:
-        <input type="date" value={birth} onChange={handleChangeBirthday} />
+        <input type="date" value={birth} onChange={handleChangeBirthday} required/>
       </p>
       <button type="submit">Add contact</button>
     </form>
